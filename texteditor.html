@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>SENTHIL Editor</title>
+<script >
+function designmode(){
+	editor.document.designMode = 'on';
+}
+
+function bold(){
+	editor.document.execCommand('bold', false, null);
+}
+
+function italic(){
+	editor.document.execCommand('italic', false, null);
+}
+
+function underline(){
+	editor.document.execCommand('underline', false, null);
+	console.log('a');
+}
+
+function fsize(){
+	var size = prompt("Enter a size (1-7)", "");
+	editor.document.execCommand('FontSize', false, size);
+}
+
+function color(){
+	var color = prompt("Enter a color code or name", "");
+	editor.document.execCommand('forecolor', false, color);
+}
+
+function link(){
+	var link = prompt("Enter a link", "http://");
+	editor.document.execCommand('createlink', false, link);
+}
+
+function paragraph(){
+	editor.document.execCommand('InsertParagraph',false,null);
+}
+function dold()
+{
+
+
+var y=window.prompt("please enter text to be DOLDed")
+
+var n = y.length;
+var a = [];
+
+for(var i=0;i<n;i++)    
+{
+
+
+if(i%2 == 0)
+{
+a[i]=y[i].bold();
+
+}
+else
+a[i]=y[i];
+}
+a.toString();
+for(var z=0;z < n; z++)
+{
+var h= document.getElementById('editor').contentWindow.document.body.innerHTML;
+var ifrm = document.getElementById('editor');
+var iframeDoc = window.frames.editor.document;
+ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+ifrm.document.open();
+if(a[z] != ',')
+{
+var con = h + a[z];
+ifrm.document.write(con);
+}
+ifrm.document.close();
+}
+
+
+}
+function ditalic()
+{
+
+
+var y=window.prompt("please enter text to be Ditalicized")
+
+var n = y.length;
+var a = [];
+
+for(var i=0;i<n;i++)    
+{
+
+
+if(i%2 == 0)
+{
+a[i]=y[i].italics();
+
+}
+else
+a[i]=y[i];
+}
+a.toString();
+for(var z=0;z < n; z++)
+{
+var h= document.getElementById('editor').contentWindow.document.body.innerHTML;
+var ifrm = document.getElementById('editor');
+var iframeDoc = window.frames.editor.document;
+ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+ifrm.document.open();
+if(a[z] != ',')
+{
+var con = h + a[z];
+ifrm.document.write(con);
+}
+ifrm.document.close();
+}
+
+
+}
+</script>
+</head>
+
+<body onLoad = "designmode()">
+
+<h2>SENTHIL Editor</h2>
+
+
+
+<form id = "rtf">
+
+<input type = "button" onclick = "bold()" value = "B">
+<input type = "button" onclick = "italic()" value = "I">
+<input type = "button" onclick = "underline()" value = "U">
+<input type = "button" onclick = "fsize()" value = "Size">
+<input type = "button" onclick = "color()" value = "Font Color">
+<input type = "button" onclick = "link()" value = "Link">
+<input type = "button" onclick = "dold(editor)" value = "Dold">
+<input type = "button" onclick = "ditalic()" value = "Ditalic">
+<input type = "button" onclick = "paragraph()" value = "Paragraph">
+<br><br>
+
+<textarea name = "textarea" id = "textarea" style = "display: none; width: 700px; height: 300px;" ;></textarea>
+
+<iframe  id = "editor" name = "editor" style = "width: 700px; height: 300px;" ></iframe>
+
+<br><br>
+
+
+
+</form>
+
+</body>
+
+</html>
